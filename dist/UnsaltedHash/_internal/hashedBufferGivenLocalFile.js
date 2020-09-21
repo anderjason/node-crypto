@@ -1,9 +1,9 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.hashedBufferOfFile = void 0;
+exports.hashedBufferGivenLocalFile = void 0;
 const crypto = require("crypto");
 const fs = require("fs");
-function hashedBufferOfFile(file) {
+function hashedBufferGivenLocalFile(file) {
     return new Promise((resolve, reject) => {
         const output = crypto.createHash("sha512");
         const input = fs.createReadStream(file.toAbsolutePath());
@@ -17,5 +17,5 @@ function hashedBufferOfFile(file) {
         input.pipe(output);
     });
 }
-exports.hashedBufferOfFile = hashedBufferOfFile;
-//# sourceMappingURL=hashedBufferOfFile.js.map
+exports.hashedBufferGivenLocalFile = hashedBufferGivenLocalFile;
+//# sourceMappingURL=hashedBufferGivenLocalFile.js.map

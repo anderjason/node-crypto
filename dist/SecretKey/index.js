@@ -7,14 +7,7 @@ class SecretKey {
     constructor(buffer) {
         this.buffer = buffer;
     }
-    static ofBase64(base64) {
-        const buffer = Buffer.from(base64, "base64");
-        if (buffer.length !== tweetnacl_1.secretbox.keyLength) {
-            throw new Error("The provided base64 secret key has an invalid length");
-        }
-        return new SecretKey(buffer);
-    }
-    static ofHex(hex) {
+    static givenHexString(hex) {
         const buffer = Buffer.from(hex, "hex");
         if (buffer.length !== tweetnacl_1.secretbox.keyLength) {
             throw new Error("The provided hex secret key has an invalid length");
@@ -24,10 +17,25 @@ class SecretKey {
     static ofRandomData() {
         return new SecretKey(bufferOfRandomSecretKey_1.bufferOfRandomSecretKey());
     }
-    toBase64() {
-        return this.buffer.toString("base64");
+    static isEqual(a, b) {
+        if (a == null && b == null) {
+            return true;
+        }
+        if (a == null || b == null) {
+            return false;
+        }
+        return a.isEqual(b);
     }
-    toHex() {
+    isEqual(other) {
+        if (other == null) {
+            return false;
+        }
+        if (!(other instanceof SecretKey)) {
+            return false;
+        }
+        return this.buffer.equals(other.buffer);
+    }
+    toHexString() {
         return this.buffer.toString("hex");
     }
 }

@@ -1,42 +1,75 @@
 import { SecretKey } from "../SecretKey";
-import { encryptedBufferOfDecryptedBuffer } from "./_internal/encryptedBufferOfDecryptedBuffer";
-import { decryptedBufferOfEncryptedBuffer } from "./_internal/decryptedBufferOfEncryptedBuffer";
+import { encryptedBufferGivenDecryptedBuffer } from "./_internal/encryptedBufferGivenDecryptedBuffer";
+import { decryptedBufferGivenEncryptedBuffer } from "./_internal/decryptedBufferGivenEncryptedBuffer";
 
 export class EncryptedData {
   private _encryptedBuffer: Buffer;
 
-  static ofPlainText(plainText: string, secretKey: SecretKey): EncryptedData {
+  static givenDecryptedStringAndKey(
+    decryptedString: string,
+    secretKey: SecretKey
+  ): EncryptedData {
     return new EncryptedData(
-      encryptedBufferOfDecryptedBuffer(Buffer.from(plainText), secretKey)
+      encryptedBufferGivenDecryptedBuffer(
+        Buffer.from(decryptedString),
+        secretKey
+      )
     );
   }
 
-  static ofDecryptedBuffer(
+  static givenDecryptedBufferAndKey(
     decryptedBuffer: Buffer,
     secretKey: SecretKey
   ): EncryptedData {
     return new EncryptedData(
-      encryptedBufferOfDecryptedBuffer(decryptedBuffer, secretKey)
+      encryptedBufferGivenDecryptedBuffer(decryptedBuffer, secretKey)
     );
   }
 
-  static ofEncryptedBase64(base64: string): EncryptedData {
-    return new EncryptedData(Buffer.from(base64, "base64"));
+  static givenEncryptedHexString(base64: string): EncryptedData {
+    return new EncryptedData(Buffer.from(base64, "hex"));
+  }
+
+  static isEqual(a: SecretKey, b: SecretKey): boolean {
+    if (a == null && b == null) {
+      return true;
+    }
+
+    if (a == null || b == null) {
+      return false;
+    }
+
+    return a.isEqual(b);
   }
 
   private constructor(encryptedBuffer: Buffer) {
     this._encryptedBuffer = encryptedBuffer;
   }
 
-  toPlainText(secretKey: SecretKey): string {
+  isEqual(other: EncryptedData): boolean {
+    if (other == null) {
+      return false;
+    }
+
+    if (!(other instanceof EncryptedData)) {
+      return false;
+    }
+
+    return this._encryptedBuffer.equals(other._encryptedBuffer);
+  }
+
+  toDecryptedString(secretKey: SecretKey): string {
     return this.toDecryptedBuffer(secretKey).toString();
   }
 
   toDecryptedBuffer(secretKey: SecretKey): Buffer {
-    return decryptedBufferOfEncryptedBuffer(this._encryptedBuffer, secretKey);
+    return decryptedBufferGivenEncryptedBuffer(
+      this._encryptedBuffer,
+      secretKey
+    );
   }
 
-  toEncryptedBase64(): string {
-    return this._encryptedBuffer.toString("base64");
+  toEncryptedHexString(): string {
+    return this._encryptedBuffer.toString("hex");
   }
 }

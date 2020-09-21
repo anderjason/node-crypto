@@ -1,8 +1,8 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.decryptedBufferOfEncryptedBuffer = void 0;
+exports.decryptedBufferGivenEncryptedBuffer = void 0;
 const tweetnacl_1 = require("tweetnacl");
-function decryptedBufferOfEncryptedBuffer(encryptedBuffer, secretKey) {
+function decryptedBufferGivenEncryptedBuffer(encryptedBuffer, secretKey) {
     const nonce = encryptedBuffer.slice(0, tweetnacl_1.secretbox.nonceLength);
     const message = encryptedBuffer.slice(tweetnacl_1.secretbox.nonceLength, encryptedBuffer.length);
     const decrypted = tweetnacl_1.secretbox.open(message, nonce, secretKey.buffer);
@@ -11,5 +11,5 @@ function decryptedBufferOfEncryptedBuffer(encryptedBuffer, secretKey) {
     }
     return Buffer.from(decrypted);
 }
-exports.decryptedBufferOfEncryptedBuffer = decryptedBufferOfEncryptedBuffer;
-//# sourceMappingURL=decryptedBufferOfEncryptedBuffer.js.map
+exports.decryptedBufferGivenEncryptedBuffer = decryptedBufferGivenEncryptedBuffer;
+//# sourceMappingURL=decryptedBufferGivenEncryptedBuffer.js.map

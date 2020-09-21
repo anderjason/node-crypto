@@ -1,0 +1,1 @@
+{"version":3,"file":"bufferOfRandomSalt.js","sourceRoot":"","sources":["../../../src/SaltedHash/_internal/bufferOfRandomSalt.ts"],"names":[],"mappings":";;;AAAA,yCAAwC;AAExC,SAAgB,kBAAkB;IAChC,OAAO,MAAM,CAAC,IAAI,CAAC,uBAAW,CAAC,EAAE,CAAC,CAAC,CAAC;AACtC,CAAC;AAFD,gDAEC"}

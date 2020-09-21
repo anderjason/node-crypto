@@ -3,7 +3,7 @@ import { SecretKey } from "../../SecretKey";
 
 const newNonce = () => randomBytes(secretbox.nonceLength);
 
-export function encryptedBufferOfDecryptedBuffer(
+export function encryptedBufferGivenDecryptedBuffer(
   decryptedBuffer: Buffer,
   secretKey: SecretKey
 ): Buffer {

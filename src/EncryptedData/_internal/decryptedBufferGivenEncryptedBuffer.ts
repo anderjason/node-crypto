@@ -1,7 +1,7 @@
 import { secretbox } from "tweetnacl";
 import { SecretKey } from "../../SecretKey";
 
-export function decryptedBufferOfEncryptedBuffer(
+export function decryptedBufferGivenEncryptedBuffer(
   encryptedBuffer: Buffer,
   secretKey: SecretKey
 ) {

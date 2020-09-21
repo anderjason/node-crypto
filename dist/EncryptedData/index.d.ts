@@ -2,11 +2,13 @@
 import { SecretKey } from "../SecretKey";
 export declare class EncryptedData {
     private _encryptedBuffer;
-    static ofPlainText(plainText: string, secretKey: SecretKey): EncryptedData;
-    static ofDecryptedBuffer(decryptedBuffer: Buffer, secretKey: SecretKey): EncryptedData;
-    static ofEncryptedBase64(base64: string): EncryptedData;
+    static givenDecryptedStringAndKey(decryptedString: string, secretKey: SecretKey): EncryptedData;
+    static givenDecryptedBufferAndKey(decryptedBuffer: Buffer, secretKey: SecretKey): EncryptedData;
+    static givenEncryptedHexString(base64: string): EncryptedData;
+    static isEqual(a: SecretKey, b: SecretKey): boolean;
     private constructor();
-    toPlainText(secretKey: SecretKey): string;
+    isEqual(other: EncryptedData): boolean;
+    toDecryptedString(secretKey: SecretKey): string;
     toDecryptedBuffer(secretKey: SecretKey): Buffer;
-    toEncryptedBase64(): string;
+    toEncryptedHexString(): string;
 }

@@ -19,7 +19,7 @@
     "dist/**/*"
   ],
   "dependencies": {
-    "@anderjason/node-filesystem": "git+https://github.com/anderjason/node-filesystem.git#dev",
+    "@anderjason/node-filesystem": "^1.0.0",
     "tweetnacl": "^1.0.3",
     "typescript": "^4.0.3"
   },

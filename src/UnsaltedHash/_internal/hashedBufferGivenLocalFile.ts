@@ -2,7 +2,7 @@ import * as crypto from "crypto";
 import * as fs from "fs";
 import { LocalFile } from "@anderjason/node-filesystem";
 
-export function hashedBufferOfFile(file: LocalFile): Promise<Buffer> {
+export function hashedBufferGivenLocalFile(file: LocalFile): Promise<Buffer> {
   return new Promise((resolve, reject) => {
     const output = crypto.createHash("sha512");
 

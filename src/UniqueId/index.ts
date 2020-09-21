@@ -1,17 +1,55 @@
 import { stringOfUuid } from "./_internal/stringOfUuid";
 
+const regex = /^([a-fA-F0-9]{8}-[a-fA-F0-9]{4}-[a-fA-F0-9]{4}-[a-fA-F0-9]{4}-[a-fA-F0-9]{12}){1}$/;
+
 export class UniqueId {
-  static ofRandomUuid(): UniqueId {
+  static ofRandom(): UniqueId {
     return new UniqueId(stringOfUuid());
   }
 
-  private _value: string;
+  static givenUUIDString(uuid: string): UniqueId {
+    if (uuid == null) {
+      throw new Error("UUID is required");
+    }
 
-  private constructor(value: string) {
-    this._value = value;
+    if (!regex.test(uuid)) {
+      throw new Error("Invalid UUID string");
+    }
+
+    return new UniqueId(uuid);
   }
 
-  toString(): string {
-    return this._value;
+  static isEqual(a: UniqueId, b: UniqueId): boolean {
+    if (a == null && b == null) {
+      return true;
+    }
+
+    if (a == null || b == null) {
+      return false;
+    }
+
+    return a.isEqual(b);
+  }
+
+  private _uuid: string;
+
+  private constructor(uuid: string) {
+    this._uuid = uuid;
+  }
+
+  isEqual(other: UniqueId): boolean {
+    if (other == null) {
+      return false;
+    }
+
+    if (!(other instanceof UniqueId)) {
+      return false;
+    }
+
+    return this._uuid === other._uuid;
+  }
+
+  toUUIDString(): string {
+    return this._uuid;
   }
 }

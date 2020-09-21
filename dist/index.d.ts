@@ -1,5 +1,6 @@
 import { EncryptedData } from "./EncryptedData";
-import { HashedData } from "./HashedData";
+import { SaltedHash } from "./SaltedHash";
 import { SecretKey } from "./SecretKey";
 import { UniqueId } from "./UniqueId";
-export { EncryptedData, HashedData, SecretKey, UniqueId };
+import { UnsaltedHash } from "./UnsaltedHash";
+export { EncryptedData, SaltedHash, UnsaltedHash, SecretKey, UniqueId };
