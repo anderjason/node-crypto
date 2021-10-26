@@ -15,7 +15,7 @@ class SecretKey {
         return new SecretKey(buffer);
     }
     static ofRandomData() {
-        return new SecretKey(bufferOfRandomSecretKey_1.bufferOfRandomSecretKey());
+        return new SecretKey((0, bufferOfRandomSecretKey_1.bufferOfRandomSecretKey)());
     }
     static isEqual(a, b) {
         if (a == null && b == null) {

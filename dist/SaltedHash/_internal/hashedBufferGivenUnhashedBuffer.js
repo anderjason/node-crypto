@@ -4,10 +4,10 @@ exports.hashedBufferGivenUnhashedBuffer = void 0;
 const tweetnacl_1 = require("tweetnacl");
 function hashedBufferGivenUnhashedBuffer(unhashedBuffer, salt) {
     if (salt == null) {
-        return Buffer.from(tweetnacl_1.hash(unhashedBuffer));
+        return Buffer.from((0, tweetnacl_1.hash)(unhashedBuffer));
     }
     else {
-        return Buffer.from(tweetnacl_1.hash(Buffer.concat([unhashedBuffer, salt])));
+        return Buffer.from((0, tweetnacl_1.hash)(Buffer.concat([unhashedBuffer, salt])));
     }
 }
 exports.hashedBufferGivenUnhashedBuffer = hashedBufferGivenUnhashedBuffer;

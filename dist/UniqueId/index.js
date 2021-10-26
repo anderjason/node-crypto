@@ -8,7 +8,7 @@ class UniqueId {
         this._uuid = uuid;
     }
     static ofRandom() {
-        return new UniqueId(stringOfUuid_1.stringOfUuid());
+        return new UniqueId((0, stringOfUuid_1.stringOfUuid)());
     }
     static givenUUIDString(uuid) {
         if (uuid == null) {

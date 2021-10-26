@@ -8,10 +8,10 @@ class EncryptedData {
         this._encryptedBuffer = encryptedBuffer;
     }
     static givenDecryptedStringAndKey(decryptedString, secretKey) {
-        return new EncryptedData(encryptedBufferGivenDecryptedBuffer_1.encryptedBufferGivenDecryptedBuffer(Buffer.from(decryptedString), secretKey));
+        return new EncryptedData((0, encryptedBufferGivenDecryptedBuffer_1.encryptedBufferGivenDecryptedBuffer)(Buffer.from(decryptedString), secretKey));
     }
     static givenDecryptedBufferAndKey(decryptedBuffer, secretKey) {
-        return new EncryptedData(encryptedBufferGivenDecryptedBuffer_1.encryptedBufferGivenDecryptedBuffer(decryptedBuffer, secretKey));
+        return new EncryptedData((0, encryptedBufferGivenDecryptedBuffer_1.encryptedBufferGivenDecryptedBuffer)(decryptedBuffer, secretKey));
     }
     static givenEncryptedHexString(base64) {
         return new EncryptedData(Buffer.from(base64, "hex"));
@@ -38,7 +38,7 @@ class EncryptedData {
         return this.toDecryptedBuffer(secretKey).toString();
     }
     toDecryptedBuffer(secretKey) {
-        return decryptedBufferGivenEncryptedBuffer_1.decryptedBufferGivenEncryptedBuffer(this._encryptedBuffer, secretKey);
+        return (0, decryptedBufferGivenEncryptedBuffer_1.decryptedBufferGivenEncryptedBuffer)(this._encryptedBuffer, secretKey);
     }
     toEncryptedHexString() {
         return this._encryptedBuffer.toString("hex");

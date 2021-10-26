@@ -8,15 +8,15 @@ class UnsaltedHash {
         this._hash = hash;
     }
     static givenUnhashedString(unhashedString) {
-        const hashedBuffer = hashedBufferGivenUnhashedBuffer_1.hashedBufferGivenUnhashedBuffer(Buffer.from(unhashedString));
+        const hashedBuffer = (0, hashedBufferGivenUnhashedBuffer_1.hashedBufferGivenUnhashedBuffer)(Buffer.from(unhashedString));
         return new UnsaltedHash(hashedBuffer);
     }
     static async givenLocalFile(localFile) {
-        const hashedBuffer = await hashedBufferGivenLocalFile_1.hashedBufferGivenLocalFile(localFile);
+        const hashedBuffer = await (0, hashedBufferGivenLocalFile_1.hashedBufferGivenLocalFile)(localFile);
         return new UnsaltedHash(hashedBuffer);
     }
     static givenUnhashedBuffer(unhashedBuffer) {
-        const hashedBuffer = hashedBufferGivenUnhashedBuffer_1.hashedBufferGivenUnhashedBuffer(unhashedBuffer);
+        const hashedBuffer = (0, hashedBufferGivenUnhashedBuffer_1.hashedBufferGivenUnhashedBuffer)(unhashedBuffer);
         return new UnsaltedHash(hashedBuffer);
     }
     static givenHashedString(hashedString) {
@@ -44,15 +44,15 @@ class UnsaltedHash {
         return this._hash.equals(other._hash);
     }
     matchesUnhashedString(unhashedString) {
-        const testHash = hashedBufferGivenUnhashedBuffer_1.hashedBufferGivenUnhashedBuffer(Buffer.from(unhashedString));
+        const testHash = (0, hashedBufferGivenUnhashedBuffer_1.hashedBufferGivenUnhashedBuffer)(Buffer.from(unhashedString));
         return testHash.equals(this._hash);
     }
     matchesUnhashedBuffer(unhashedBuffer) {
-        const testHash = hashedBufferGivenUnhashedBuffer_1.hashedBufferGivenUnhashedBuffer(unhashedBuffer);
+        const testHash = (0, hashedBufferGivenUnhashedBuffer_1.hashedBufferGivenUnhashedBuffer)(unhashedBuffer);
         return testHash.equals(this._hash);
     }
     async matchesLocalFile(localFile) {
-        const testHash = await hashedBufferGivenLocalFile_1.hashedBufferGivenLocalFile(localFile);
+        const testHash = await (0, hashedBufferGivenLocalFile_1.hashedBufferGivenLocalFile)(localFile);
         return testHash.equals(this._hash);
     }
     toHashedString() {

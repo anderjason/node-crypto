@@ -9,13 +9,13 @@ class SaltedHash {
         this._salt = salt;
     }
     static givenUnhashedString(unhashedString) {
-        const salt = bufferOfRandomSalt_1.bufferOfRandomSalt();
-        const hashedBuffer = hashedBufferGivenUnhashedBuffer_1.hashedBufferGivenUnhashedBuffer(Buffer.from(unhashedString), salt);
+        const salt = (0, bufferOfRandomSalt_1.bufferOfRandomSalt)();
+        const hashedBuffer = (0, hashedBufferGivenUnhashedBuffer_1.hashedBufferGivenUnhashedBuffer)(Buffer.from(unhashedString), salt);
         return new SaltedHash(hashedBuffer, salt);
     }
     static givenUnhashedBuffer(unhashedBuffer) {
-        const salt = bufferOfRandomSalt_1.bufferOfRandomSalt();
-        const hashedBuffer = hashedBufferGivenUnhashedBuffer_1.hashedBufferGivenUnhashedBuffer(unhashedBuffer, salt);
+        const salt = (0, bufferOfRandomSalt_1.bufferOfRandomSalt)();
+        const hashedBuffer = (0, hashedBufferGivenUnhashedBuffer_1.hashedBufferGivenUnhashedBuffer)(unhashedBuffer, salt);
         return new SaltedHash(hashedBuffer, salt);
     }
     static givenHashedString(hashedString) {
@@ -46,11 +46,11 @@ class SaltedHash {
         return this._hash.equals(other._hash) && this._salt.equals(other._salt);
     }
     matchesUnhashedString(unhashedString) {
-        const testHash = hashedBufferGivenUnhashedBuffer_1.hashedBufferGivenUnhashedBuffer(Buffer.from(unhashedString), this._salt);
+        const testHash = (0, hashedBufferGivenUnhashedBuffer_1.hashedBufferGivenUnhashedBuffer)(Buffer.from(unhashedString), this._salt);
         return testHash.equals(this._hash);
     }
     matchesUnhashedBuffer(unhashedBuffer) {
-        const testHash = hashedBufferGivenUnhashedBuffer_1.hashedBufferGivenUnhashedBuffer(unhashedBuffer, this._salt);
+        const testHash = (0, hashedBufferGivenUnhashedBuffer_1.hashedBufferGivenUnhashedBuffer)(unhashedBuffer, this._salt);
         return testHash.equals(this._hash);
     }
     toHashedString() {
